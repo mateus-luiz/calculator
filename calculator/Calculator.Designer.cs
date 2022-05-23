@@ -92,7 +92,7 @@
             this.btnDecimal.Name = "btnDecimal";
             this.btnDecimal.Size = new System.Drawing.Size(75, 45);
             this.btnDecimal.TabIndex = 1;
-            this.btnDecimal.Text = ",";
+            this.btnDecimal.Text = ".";
             this.btnDecimal.UseVisualStyleBackColor = false;
             this.btnDecimal.Click += new System.EventHandler(this.putDecimal);
             // 

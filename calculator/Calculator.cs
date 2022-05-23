@@ -26,6 +26,7 @@ namespace calculator
             if(this.textResult.Text.Length <= 8)
             {
                 this.textResult.Text += i.ToString();
+                Convert.ToDecimal(value);
                 value = Double.Parse(textResult.Text);
             }
 
