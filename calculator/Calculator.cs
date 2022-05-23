@@ -23,8 +23,12 @@ namespace calculator
 
         private void InputNumber(int i)
         {
-            this.textResult.Text += i.ToString();
-            value = Int64.Parse(textResult.Text);
+            if(this.textResult.Text.Length <= 8)
+            {
+                this.textResult.Text += i.ToString();
+                value = Double.Parse(textResult.Text);
+            }
+
         }
 
         private void btn0_Click(object sender, EventArgs e)
@@ -155,7 +159,7 @@ namespace calculator
         {
             result = Equation(result, value);
             this.textResult.Text = result.ToString();
-            this.equationLabel.Text += value.ToString() + "=";
+            this.equationLabel.Text += value.ToString() + " = ";
             value = result;
             result = 0;
         }
@@ -190,6 +194,32 @@ namespace calculator
 
         private void putDecimal(object sender, EventArgs e)
         {
+            string text = this.textResult.Text;
+            if (!text.Contains(','))
+            {
+                this.textResult.Text += ',';
+            }
+        }
+
+        private void Calculator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.NumPad0 || e.KeyCode == Keys.D0) InputNumber(0);
+            if (e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.D1) InputNumber(1);
+            if (e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.D2) InputNumber(2);
+            if (e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.D3) InputNumber(3);
+            if (e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.D4) InputNumber(4);
+            if (e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.D5) InputNumber(5);
+            if (e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.D6) InputNumber(6);
+            if (e.KeyCode == Keys.NumPad7 || e.KeyCode == Keys.D7) InputNumber(7);
+            if (e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.D8) InputNumber(8);
+            if (e.KeyCode == Keys.NumPad9 || e.KeyCode == Keys.D9) InputNumber(9);
+
+            if (e.KeyCode == Keys.Add) Sum(sender, e);
+            if (e.KeyCode == Keys.Subtract) Subtract(sender, e);
+            if (e.KeyCode == Keys.Multiply) Multiply(sender, e);
+            if (e.KeyCode == Keys.Divide) Divide(sender, e);
+            if (e.KeyCode == Keys.Enter) Result(sender, e);
+            if (e.KeyCode == Keys.Back) btnClear_Click(sender, e);
         }
     }
 }
